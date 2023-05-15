@@ -16,17 +16,20 @@ service WhatsappService {
 message GetClientSeedRequest {
     optional string sessionId = 1;
     SeedTypes seedType = 2;
+    string userId = 3;
 }
 
 message SendMessageRequest {
     repeated WhatsappUserModel users = 1;
     WhatsappMessageContentModel content = 2;
-    optional string sessionId = 3;
+    string userId = 3;
+    optional string sessionId = 4;
 }
 
 message HandleSessionRequest {
     optional string sessionId = 1;
     SessionActionTypes action = 2;
+    string userId = 3;
 }
 
 
@@ -37,6 +40,7 @@ message WhatsappResponse {
     string sessionId = 3;
     bool loading = 4;
 }
+
 
 message GetClientSeedResponse {
     string status = 1;
