@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package whatsapp;
+
+service WhatsappService {
+    rpc handleSession (HandleSessionRequest) returns (WhatsappResponse) {}
+    rpc sendMessage (SendMessageRequest) returns (WhatsappResponse) {}
+    rpc getClientSeed (GetClientSeedRequest) returns (GetClientSeedResponse) {}
+//    rpc schedule (ValidateRequest) returns (ValidateResponse) {}
+//    rpc saveMessage (ValidateRequest) returns (ValidateResponse) {}
+//    rpc exportContacts (ValidateRequest) returns (ValidateResponse) {}
+}
+
+
+// REQUESTS
+message GetClientSeedRequest {
+    optional string sessionId = 1;
+    SeedTypes seedType = 2;
+}
+
+message SendMessageRequest {
+    repeated WhatsappUserModel users = 1;
+    WhatsappMessageContentModel content = 2;
+}
+
+message HandleSessionRequest {
+    optional string sessionId = 1;
+    SessionActionTypes action = 2;
+}
+
+
+// RESPONSES
+message WhatsappResponse {
+    WhatsappResponseSessionStatusTypes session_status = 1;
+    optional string qrCode = 2;
+    string sessionId = 3;
+    bool loading = 4;
+}
+
+message GetClientSeedResponse {
+    string status = 1;
+}
+
+
+// MODELS
+message WhatsappUserModel {
+    string firstName = 1;
+    string lastName = 2;
+    string fullName = 3;
+    string number = 4;
+}
+
+enum WhatsappResponseSessionStatusTypes {
+    ready = 0;
+    starting = 1;
+    started = 2;
+    logged = 3;
+    logged_out = 5;
+}
+
+
+enum SeedTypes {
+    users = 0;
+    groups = 1;
+    labels = 2;
+    chats = 3;
+    all = 4;
+}
+
+message WhatsappMessageContentModel {
+    string text = 1;
+    string image = 2;
+}
+
+message WhatsappGroupModel {
+    string subject = 1;
+    string id = 2;
+}
+
+message WhatsappLabelModel {
+    string name = 1;
+    string hexColor = 2;
+}
+
+enum SessionActionTypes {
+    logout = 0;
+    login  = 1;
+}
