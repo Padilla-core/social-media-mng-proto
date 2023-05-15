@@ -21,6 +21,7 @@ message GetClientSeedRequest {
 message SendMessageRequest {
     repeated WhatsappUserModel users = 1;
     WhatsappMessageContentModel content = 2;
+    optional string sessionId = 3;
 }
 
 message HandleSessionRequest {
