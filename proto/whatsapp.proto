@@ -34,7 +34,8 @@ message HandleSessionRequest {
 message WhatsappResponse {
     WhatsappResponseSessionStatusTypes session_status = 1;
     optional string qrCode = 2;
-    bool loading = 4;
+    optional bool loading = 4;
+    optional string error = 5;
 }
 
 
@@ -69,8 +70,8 @@ enum SeedTypes {
 }
 
 message WhatsappMessageContentModel {
-    string text = 1;
-    string image = 2;
+   optional string text = 1;
+   optional string image = 2;
 }
 
 message WhatsappGroupModel {
