@@ -4,8 +4,8 @@ package whatsapp;
 
 service WhatsappService {
     rpc handleSession (HandleSessionRequest) returns (WhatsappResponse) {}
-    rpc sendMessage (SendMessageRequest) returns (WhatsappResponse) {}
-    rpc getClientSeed (GetClientSeedRequest) returns (GetClientSeedResponse) {}
+//    rpc sendMessage (SendMessageRequest) returns (WhatsappResponse) {}
+//    rpc getClientSeed (GetClientSeedRequest) returns (GetClientSeedResponse) {}
 //    rpc schedule (ValidateRequest) returns (ValidateResponse) {}
 //    rpc saveMessage (ValidateRequest) returns (ValidateResponse) {}
 //    rpc exportContacts (ValidateRequest) returns (ValidateResponse) {}
