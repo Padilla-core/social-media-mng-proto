@@ -36,6 +36,7 @@ message WhatsappResponse {
     optional string qrCode = 2;
     optional bool loading = 4;
     optional string error = 5;
+    optional string sessionId = 6;
 }
 
 
