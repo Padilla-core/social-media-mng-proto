@@ -14,18 +14,18 @@ service WhatsappService {
 
 // REQUESTS
 message GetClientSeedRequest {
-    string sessionId = 1;
+    optional string sessionId = 1;
     SeedTypes seedType = 2;
 }
 
 message SendMessageRequest {
     repeated WhatsappUserModel users = 1;
     WhatsappMessageContentModel content = 2;
-    string sessionId = 4;
+    optional string sessionId = 4;
 }
 
 message HandleSessionRequest {
-    string sessionId = 1;
+    optional string sessionId = 1;
     SessionActionTypes action = 2;
 }
 
