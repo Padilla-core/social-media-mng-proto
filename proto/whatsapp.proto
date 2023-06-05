@@ -50,7 +50,8 @@ message WhatsappUserModel {
     string firstName = 1;
     string lastName = 2;
     string fullName = 3;
-    string number = 4;
+    optional string number = 4;
+    optional string chatId = 5;
 }
 
 enum WhatsappResponseSessionStatusTypes {
