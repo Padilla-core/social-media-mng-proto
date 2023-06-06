@@ -30,9 +30,14 @@ message HandleSessionRequest {
     SessionActionTypes action = 2;
 }
 
+message GetChatMessageSearchOptions {
+    optional int32 limit = 1;
+}
+
 message GetChatMessagesRequest {
     optional string sessionId = 1;
     string chatId = 2;
+    GetChatMessageSearchOptions searchOptions = 3;
 }
 
 
