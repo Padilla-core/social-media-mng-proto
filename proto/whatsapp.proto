@@ -86,7 +86,7 @@ enum WhatsappChatStatusTypes {
     unread = 1;
     archived = 2;
     deleted = 3;
-    pinned = 3;
+    pinned = 4;
 }
 
 
