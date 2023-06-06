@@ -5,7 +5,7 @@ package whatsapp;
 service WhatsappService {
     rpc handleSession (HandleSessionRequest) returns (WhatsappResponse) {}
     rpc sendMessage (SendMessageRequest) returns (WhatsappResponse) {}
-    rpc getClientSeed (GetClientSeedRequest) returns (WhatsappResponse) {}
+    rpc getClientSeed (ClientSeedRequest) returns (WhatsappResponse) {}
     rpc getChatMessages (GetChatMessagesRequest) returns (WhatsappResponse) {}
     rpc handleChatStatus (HandleChatStatusRequest) returns (HandleChatStatusResponse) {}
 //    rpc schedule (ValidateRequest) returns (ValidateResponse) {}
@@ -15,7 +15,7 @@ service WhatsappService {
 
 
 // REQUESTS
-message GetClientSeedRequest {
+message ClientSeedRequest {
     optional string sessionId = 1;
     SeedTypes seedType = 2;
 }
