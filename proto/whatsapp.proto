@@ -5,8 +5,9 @@ package whatsapp;
 service WhatsappService {
     rpc handleSession (HandleSessionRequest) returns (WhatsappResponse) {}
     rpc sendMessage (SendMessageRequest) returns (WhatsappResponse) {}
-    rpc getClientSeed (GetClientSeedRequest) returns (GetClientSeedResponse) {}
+    rpc getClientSeed (GetClientSeedRequest) returns (WhatsappResponse) {}
     rpc getChatMessages (GetChatMessagesRequest) returns (WhatsappResponse) {}
+    rpc handleChatStatus (HandleChatStatusRequest) returns (HandleChatStatusResponse) {}
 //    rpc schedule (ValidateRequest) returns (ValidateResponse) {}
 //    rpc saveMessage (ValidateRequest) returns (ValidateResponse) {}
 //    rpc exportContacts (ValidateRequest) returns (ValidateResponse) {}
@@ -32,14 +33,26 @@ message HandleSessionRequest {
 
 message GetChatMessageSearchOptions {
     optional int32 limit = 1;
+    string query = 2;
+    optional string chatId = 3;
 }
 
 message GetChatMessagesRequest {
     optional string sessionId = 1;
     string chatId = 2;
-    GetChatMessageSearchOptions searchOptions = 3;
+    optional GetChatMessageSearchOptions searchOptions = 3;
 }
 
+message HandleChatStatusRequest {
+    optional string sessionId = 1;
+    WhatsappChatStatusTypes status = 2;
+}
+
+message HandleChatStatusResponse {
+    string sessionId = 1;
+    WhatsappChatStatusTypes status = 2;
+    optional string error = 3;
+}
 
 // RESPONSES
 message WhatsappResponse {
@@ -48,11 +61,6 @@ message WhatsappResponse {
     optional bool loading = 4;
     optional string error = 5;
     optional string sessionId = 6;
-}
-
-
-message GetClientSeedResponse {
-    string status = 1;
 }
 
 
@@ -71,6 +79,14 @@ enum WhatsappResponseSessionStatusTypes {
     started = 2;
     logged = 3;
     logged_out = 5;
+}
+
+enum WhatsappChatStatusTypes {
+    read = 0;
+    unread = 1;
+    archived = 2;
+    deleted = 3;
+    pinned = 3;
 }
 
 
