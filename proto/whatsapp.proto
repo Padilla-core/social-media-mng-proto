@@ -46,12 +46,14 @@ message GetChatMessagesRequest {
 message HandleChatStatusRequest {
     optional string sessionId = 1;
     WhatsappChatStatusTypes status = 2;
+    string chatId = 3;
 }
 
 message HandleChatStatusResponse {
     string sessionId = 1;
     WhatsappChatStatusTypes status = 2;
     optional string error = 3;
+    string chatId = 4;
 }
 
 // RESPONSES
