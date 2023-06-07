@@ -43,8 +43,10 @@ message ChatMessagesRequest {
 
 message HandleChatStatusRequest {
     optional string sessionId = 1;
-    WhatsappChatStatusTypes status = 2;
-    string chatId = 3;
+    optional bool read = 2;
+    optional bool pinned = 3;
+    optional bool archived = 4;
+    string chatId = 5;
 }
 
 
@@ -118,14 +120,6 @@ enum WhatsappResponseSessionStatusTypes {
 enum SessionActionTypes {
     logout = 0;
     login  = 1;
-}
-
-enum WhatsappChatStatusTypes {
-    read = 0;
-    unread = 1;
-    archived = 2;
-    deleted = 3;
-    pinned = 4;
 }
 
 
