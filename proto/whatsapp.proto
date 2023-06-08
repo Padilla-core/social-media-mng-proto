@@ -80,7 +80,7 @@ message WhatsappUserModel {
     string firstName = 1;
     string lastName = 2;
     string fullName = 3;
-    optional string int32 = 4;
+    optional string phone = 4;
     optional string chatId = 5;
 }
 
