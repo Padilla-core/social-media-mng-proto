@@ -71,7 +71,13 @@ message HandleChatStatusResponse {
     string chatId = 7;
 }
 
-
+message ChatMessagesResponse {
+    optional string qrCode = 2;
+    optional bool loading = 4;
+    optional string error = 5;
+    optional string sessionId = 6;
+    repeated MessageModel messages = 7;
+}
 
 
 //////////////////////////////////// MODELS ////////////////////////////////////////////////
