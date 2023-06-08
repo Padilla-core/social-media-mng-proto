@@ -6,7 +6,7 @@ service WhatsappService {
     rpc handleSession (HandleSessionRequest) returns (WhatsappResponse) {}
     rpc sendMessage (SendMessageRequest) returns (WhatsappResponse) {}
     rpc getClientSeed (ClientSeedRequest) returns (WhatsappResponse) {}
-    rpc getChatMessages (ChatMessagesRequest) returns (WhatsappResponse) {}
+    rpc getChatMessages (ChatMessagesRequest) returns (ChatMessagesResponse) {}
     rpc handleChatStatus (HandleChatStatusRequest) returns (HandleChatStatusResponse) {}
     //    rpc schedule (ValidateRequest) returns (ValidateResponse) {}
     //    rpc saveMessage (ValidateRequest) returns (ValidateResponse) {}
