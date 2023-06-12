@@ -46,7 +46,8 @@ message HandleChatStatusRequest {
     optional bool read = 2;
     optional bool pinned = 3;
     optional bool archived = 4;
-    string chatId = 5;
+    optional bool muted = 5;
+    string chatId = 6;
 }
 
 
@@ -67,8 +68,9 @@ message HandleChatStatusResponse {
     optional bool read = 2;
     optional bool pinned = 4;
     optional bool archived = 5;
-    optional string error = 6;
-    string chatId = 7;
+    optional bool muted = 6;
+    optional string error = 7;
+    string chatId = 8;
 }
 
 message ChatMessagesResponse {
