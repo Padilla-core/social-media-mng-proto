@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "google/protobuf/any.proto";
 
 package whatsapp;
 
@@ -214,9 +215,7 @@ enum MessageTypes {
 
 
 //// whatsapp-web.js models
-        syntax = "proto3";
 
-import "google/protobuf/any.proto";
 
 message MessageModel {
 
