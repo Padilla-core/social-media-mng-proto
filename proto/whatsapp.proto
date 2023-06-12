@@ -113,85 +113,6 @@ message ChatMessageSearchModel {
     string query = 2;
 }
 
-message MessageModel {
-    /** ACK status for the message */
-    MessageAckTypes ack = 1;
-    /** If the message was sent to a group, this field will contain the user that sent the message. */
-    string author = 2;
-    /** String that represents from which device type the message was sent */
-    string deviceType = 3;
-    /** Message content */
-    string body = 4;
-    /** Indicates if the message was a broadcast */
-    bool broadcast = 5;
-    /** Indicates if the message was a status update */
-    bool isStatus = 6;
-    /** Indicates if the message is a Gif */
-    bool isGif = 7;
-    /** Indicates if the message will disappear after it expires */
-    bool isEphemeral = 8;
-    /** ID for the Chat that this message was sent to, except if the message was sent by the current user */
-    string from = 9;
-    /** Indicates if the message was sent by the current user */
-    bool fromMe = 10;
-    /** Indicates if the message has media available for download */
-    bool hasMedia = 11;
-    /** Indicates if the message was sent as a reply to another message */
-    bool hasQuotedMsg = 12;
-    /** Indicates whether there are reactions to the message */
-    bool hasReaction = 13;
-    /** Indicates the duration of the message in seconds */
-    string duration = 14;
-    /** ID that represents the message */
-    MessageIdModel id = 15;
-    /** Indicates if the message was forwarded */
-    bool isForwarded = 16;
-    /**
-     * Indicates how many times the message was forwarded.
-     * The maximum value is 127.
-     */
-    int32 forwardingScore = 17;
-    /** Indicates if the message was starred */
-    bool isStarred = 18;
-    /** Location information contained in the message, if the message is type "location" */
-    LocationModel location = 19;
-    /** List of vCards contained in the message */
-    repeated string vCards = 20;
-    /** Invite v4 info */
-    InviteV4DataModel inviteV4 = 21;
-    /** MediaKey that represents the sticker 'ID' */
-    string mediaKey = 22;
-    /** Indicates the mentions in the message body. */
-    repeated string mentionedIds = 23;
-    /** Unix timestamp for when the message was created */
-    int32 timestamp = 24;
-    /**
-     * ID for who this message is for.
-     * If the message is sent by the current user, it will be the Chat to which the message is being sent.
-     * If the message is sent by another user, it will be the ID for the current user.
-     */
-    string to = 25;
-    /** Message type */
-    MessageTypes type = 26;
-    /** Links included in the message. */
-    repeated LinkModel links = 27;
-    /** Order ID */
-    string orderId = 28;
-    /** title */
-    string title = 29;
-    /** description*/
-    string description = 30;
-    /** Business Owner JID */
-    string businessOwnerJid = 31;
-    /** Product JID */
-    string productId = 32;
-    /** Message buttons */
-    DynamicReplyButtons dynamicReplyButtons = 33;
-    /** Selected button ID */
-    string selectedButtonId = 34;
-    /** Selected list row ID */
-    string selectedRowId = 35;
-}
 
 message DynamicReplyButtons {}
 message MessageIdModel {
@@ -290,3 +211,179 @@ enum MessageTypes {
     reaction = 34;
     template_button_reply = 35;
 }
+
+
+//// whatsapp-web.js models
+        syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+message MessageModel {
+
+    message Id {
+        bool fromMe = 1;
+        string remote = 2;
+        string id = 3;
+        string _serialized = 4;
+    }
+
+    message From {
+        string server = 1;
+        string user = 2;
+        string _serialized = 3;
+    }
+
+    message To {
+        string server = 1;
+        string user = 2;
+        string _serialized = 3;
+    }
+
+    message DataModel {
+        Id id = 1;
+        uint32 rowId = 2;
+        string body = 3;
+        string type = 4;
+        uint32 t = 5;
+        From from = 6;
+        To to = 7;
+        string self = 8;
+        uint32 ack = 9;
+        bool invis = 10;
+        bool star = 11;
+        bool kicNotified = 12;
+        bool isFromTemplate = 13;
+        repeated google.protobuf.Any pollOptions = 14;
+        bool pollInvalidated = 15;
+        google.protobuf.Any latestEditMsgKey = 16;
+        google.protobuf.Any latestEditSenderTimestampMs = 17;
+        bool broadcast = 18;
+        repeated google.protobuf.Any mentionedJidList = 19;
+        repeated google.protobuf.Any groupMentions = 20;
+        bool isVcardOverMmsDocument = 21;
+        bool isForwarded = 22;
+        repeated google.protobuf.Any labels = 23;
+        bool hasReaction = 24;
+        bool ephemeralOutOfSync = 25;
+        bool productHeaderImageRejected = 26;
+        uint32 lastPlaybackProgress = 27;
+        bool isDynamicReplyButtonsMsg = 28;
+        bool isMdHistoryMsg = 29;
+        uint32 stickerSentTs = 30;
+        bool isAvatar = 31;
+        bool requiresDirectConnection = 32;
+        repeated google.protobuf.Any links = 33;
+    }
+
+    message Id1 {
+        bool fromMe = 1;
+        string remote = 2;
+        string id = 3;
+        string _serialized = 4;
+    }
+
+    DataModel _data = 1;
+    Id1 id = 2;
+    uint32 ack = 3;
+    bool hasMedia = 4;
+    string body = 5;
+    string type = 6;
+    uint32 timestamp = 7;
+    string from = 8;
+    string to = 9;
+    string deviceType = 10;
+    bool isForwarded = 11;
+    uint32 forwardingScore = 12;
+    bool isStatus = 13;
+    bool isStarred = 14;
+    bool broadcast = 15;
+    bool fromMe = 16;
+    bool hasQuotedMsg = 17;
+    bool hasReaction = 18;
+    repeated google.protobuf.Any vCards = 19;
+    repeated google.protobuf.Any mentionedIds = 20;
+    bool isGif = 21;
+    repeated google.protobuf.Any links = 22;
+}
+
+
+
+//message MessageModel {
+//    /** ACK status for the message */
+//    MessageAckTypes ack = 1;
+//    /** If the message was sent to a group, this field will contain the user that sent the message. */
+//    string author = 2;
+//    /** String that represents from which device type the message was sent */
+//    string deviceType = 3;
+//    /** Message content */
+//    string body = 4;
+//    /** Indicates if the message was a broadcast */
+//    bool broadcast = 5;
+//    /** Indicates if the message was a status update */
+//    bool isStatus = 6;
+//    /** Indicates if the message is a Gif */
+//    bool isGif = 7;
+//    /** Indicates if the message will disappear after it expires */
+//    bool isEphemeral = 8;
+//    /** ID for the Chat that this message was sent to, except if the message was sent by the current user */
+//    string from = 9;
+//    /** Indicates if the message was sent by the current user */
+//    bool fromMe = 10;
+//    /** Indicates if the message has media available for download */
+//    bool hasMedia = 11;
+//    /** Indicates if the message was sent as a reply to another message */
+//    bool hasQuotedMsg = 12;
+//    /** Indicates whether there are reactions to the message */
+//    bool hasReaction = 13;
+//    /** Indicates the duration of the message in seconds */
+//    string duration = 14;
+//    /** ID that represents the message */
+//    MessageIdModel id = 15;
+//    /** Indicates if the message was forwarded */
+//    bool isForwarded = 16;
+//    /**
+//     * Indicates how many times the message was forwarded.
+//     * The maximum value is 127.
+//     */
+//    int32 forwardingScore = 17;
+//    /** Indicates if the message was starred */
+//    bool isStarred = 18;
+//    /** Location information contained in the message, if the message is type "location" */
+//    LocationModel location = 19;
+//    /** List of vCards contained in the message */
+//    repeated string vCards = 20;
+//    /** Invite v4 info */
+//    InviteV4DataModel inviteV4 = 21;
+//    /** MediaKey that represents the sticker 'ID' */
+//    string mediaKey = 22;
+//    /** Indicates the mentions in the message body. */
+//    repeated string mentionedIds = 23;
+//    /** Unix timestamp for when the message was created */
+//    int32 timestamp = 24;
+//    /**
+//     * ID for who this message is for.
+//     * If the message is sent by the current user, it will be the Chat to which the message is being sent.
+//     * If the message is sent by another user, it will be the ID for the current user.
+//     */
+//    string to = 25;
+//    /** Message type */
+//    MessageTypes type = 26;
+//    /** Links included in the message. */
+//    repeated LinkModel links = 27;
+//    /** Order ID */
+//    string orderId = 28;
+//    /** title */
+//    string title = 29;
+//    /** description*/
+//    string description = 30;
+//    /** Business Owner JID */
+//    string businessOwnerJid = 31;
+//    /** Product JID */
+//    string productId = 32;
+//    /** Message buttons */
+//    DynamicReplyButtons dynamicReplyButtons = 33;
+//    /** Selected button ID */
+//    string selectedButtonId = 34;
+//    /** Selected list row ID */
+//    string selectedRowId = 35;
+//}
