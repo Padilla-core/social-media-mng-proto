@@ -1,3 +1,38 @@
 syntax = "proto3";
 
 package information_persister;
+
+import "google/protobuf/timestamp.proto";
+
+service InformationPersisterService {
+    rpc getEvents (GetEventsRequest) returns (GetEventsResponse) {}
+}
+
+
+// ------------- Get Events ------------- ///
+message GetEventsResponse {
+
+    message Content {
+        string _id = 1;
+        string name = 2;
+        string companyId = 3;
+        string application = 4;
+        google.protobuf.Timestamp date = 5;
+    }
+
+    uint32 page = 1;
+    uint32 perPage = 2;
+    uint32 totalPages = 3;
+    uint32 payloadSize = 4;
+    bool hasNext = 5;
+    uint32 totalRecords = 6;
+    repeated Content content = 7;
+}
+
+message GetEventsRequest {
+    string companyId = 1;
+    string application = 2;
+    optional uint32 perPage = 3;
+    optional uint32 page = 4;
+}
+// ------------- End  Get Events ------------- ///
