@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package information_persister;
+package user_repository;
 
 import "google/protobuf/timestamp.proto";
 
-service InformationPersisterService {
+service UserRepositoryService {
     rpc getEvents (GetEventsRequest) returns (GetEventsResponse) {}
 }
 
