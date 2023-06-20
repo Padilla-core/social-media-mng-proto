@@ -6,8 +6,8 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 service UserRepositoryService {
-    rpc getEvents (GetEventsRequest) returns (GetEventsResponse) {}
-    rpc getEvents (ID) returns (Event) {}
+    rpc getEvents   (GetEventsRequest) returns (GetEventsResponse) {}
+    rpc getEvent    (ID) returns (Event) {}
     rpc createEvent (CreateEventRequest) returns (Event) {}
     rpc updateEvent (UpdateEventRequest) returns (Event) {}
     rpc deleteEvent (ID) returns (google.protobuf.Empty) {}
