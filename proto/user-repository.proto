@@ -11,7 +11,7 @@ service UserRepositoryService {
     rpc createEvent (CreateEventRequest) returns (Event) {}
     rpc updateEvent (UpdateEventRequest) returns (Event) {}
     rpc deleteEvent (ID) returns (google.protobuf.Empty) {}
-    rpc createFile  (CreateFileRequest) returns (CreateFileResponse) {}
+    rpc createFile  (stream CreateFileRequest) returns (stream CreateFileResponse) {}
 }
 
 // utils 
