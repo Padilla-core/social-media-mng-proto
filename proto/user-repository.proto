@@ -11,6 +11,7 @@ service UserRepositoryService {
     rpc createEvent (CreateEventRequest) returns (Event) {}
     rpc updateEvent (UpdateEventRequest) returns (Event) {}
     rpc deleteEvent (ID) returns (google.protobuf.Empty) {}
+    rpc createFile  (CreateFileRequest) returns (CreateFileResponse) {}
 }
 
 // utils 
@@ -79,3 +80,12 @@ message UpdateEventRequest {
     string date = 5;
 }
 // ------------- End Update Event ------------- ///
+
+
+// ------------- Create File ------------- ///
+message CreateFileResponse {
+    string url = 1;
+}
+message CreateFileRequest {
+    string name = 1;
+}
