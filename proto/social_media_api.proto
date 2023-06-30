@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package social_media_api;
 
-import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 service SocialMediaApiService {
@@ -26,7 +25,7 @@ message Event {
     string name = 2;
     string companyId = 3;
     string application = 4;
-    google.protobuf.Timestamp date = 5;
+    string date = 5;
 }
 // End Entities
 
@@ -38,7 +37,7 @@ message GetEventsResponse {
         string name = 2;
         string companyId = 3;
         string application = 4;
-        google.protobuf.Timestamp date = 5;
+        string date = 5;
     }
 
     uint32 page = 1;
