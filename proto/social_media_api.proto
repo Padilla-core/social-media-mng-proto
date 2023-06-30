@@ -3,6 +3,8 @@ syntax = "proto3";
 package social_media_api;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
 
 service SocialMediaApiService {
     rpc getEvents   (GetEventsRequest) returns (GetEventsResponse) {}
@@ -12,6 +14,7 @@ service SocialMediaApiService {
     rpc deleteEvent (ID) returns (google.protobuf.Empty) {}
     rpc createFile  (stream CreateFileRequest) returns (stream CreateFileResponse) {}
 }
+
 
 // utils 
 message ID {
@@ -25,7 +28,7 @@ message Event {
     string name = 2;
     string companyId = 3;
     string application = 4;
-    string date = 5;
+    google.protobuf.Timestamp date = 5;
 }
 // End Entities
 
@@ -37,7 +40,7 @@ message GetEventsResponse {
         string name = 2;
         string companyId = 3;
         string application = 4;
-        string date = 5;
+        google.protobuf.Timestamp date = 5;
     }
 
     uint32 page = 1;
