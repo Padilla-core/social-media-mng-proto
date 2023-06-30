@@ -39,7 +39,7 @@ message GetEventsResponse {
         string name = 2;
         string companyId = 3;
         string application = 4;
-        string date = 5;
+        int64 date = 5;
     }
 
     uint32 page = 1;
