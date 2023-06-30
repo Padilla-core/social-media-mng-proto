@@ -4,6 +4,7 @@ package social_media_api;
 
 import "google/protobuf/empty.proto";
 
+
 service SocialMediaApiService {
     rpc getEvents   (GetEventsRequest) returns (GetEventsResponse) {}
     rpc getEvent    (ID) returns (Event) {}
@@ -21,7 +22,7 @@ message ID {
 
 // Entitities 
 message Event {
-    string _id = 1;
+    byte _id = 1;
     string name = 2;
     string companyId = 3;
     string application = 4;
@@ -33,7 +34,7 @@ message Event {
 message GetEventsResponse {
 
     message Content {
-        string _id = 1;
+        byte _id = 1;
         string name = 2;
         string companyId = 3;
         string application = 4;
