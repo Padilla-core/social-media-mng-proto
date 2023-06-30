@@ -4,6 +4,8 @@ package social_media_api;
 
 import "google/protobuf/empty.proto";
 
+import "pmongo/objectid.proto";
+
 
 service SocialMediaApiService {
     rpc getEvents   (GetEventsRequest) returns (GetEventsResponse) {}
@@ -22,7 +24,7 @@ message ID {
 
 // Entitities 
 message Event {
-    bytes _id = 1;
+    pmongo.ObjectId id = 1 [(tagger.tags) = "bson:\"_id,omitempty\"" ];
     string name = 2;
     string companyId = 3;
     string application = 4;
@@ -34,7 +36,7 @@ message Event {
 message GetEventsResponse {
 
     message Content {
-        bytes _id = 1;
+        pmongo.ObjectId id = 1 [(tagger.tags) = "bson:\"_id,omitempty\"" ];
         string name = 2;
         string companyId = 3;
         string application = 4;
