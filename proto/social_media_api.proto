@@ -27,7 +27,7 @@ message Event {
     string name = 2;
     string companyId = 3;
     string application = 4;
-    string date = 5;
+    string executeAt = 5;
 }
 // End Entities
 
@@ -39,7 +39,7 @@ message GetEventsResponse {
         string name = 2;
         string companyId = 3;
         string application = 4;
-        int64 date = 5;
+        string executeAt = 5;
     }
 
     uint32 page = 1;
@@ -64,7 +64,7 @@ message CreateEventRequest {
     string name = 1;
     string companyId = 2;
     string application = 3;
-    string date = 4;
+    string executeAt = 4;
 }
 // ------------- End Create Event ------------- ///
 
@@ -78,7 +78,7 @@ message DeleteEventRequest {
 message UpdateEventRequest {
     string _id = 1;
     string name = 2;
-    string date = 5;
+    string executeAt = 5;
 }
 // ------------- End Update Event ------------- ///
 
