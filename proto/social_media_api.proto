@@ -70,13 +70,13 @@ message CreateEventRequest {
 
 // ------------- Delete Event ------------- ///
 message DeleteEventRequest {
-    string _id = 1;
+    string id = 1;
 }
 // ------------- End Delete Event ------------- ///
 
 // ------------- Update Event ------------- ///
 message UpdateEventRequest {
-    string _id = 1;
+    string id = 1;
     string name = 2;
     string executeAt = 5;
 }
