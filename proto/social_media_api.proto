@@ -84,9 +84,23 @@ message UpdateEventRequest {
 
 
 // ------------- Create File ------------- ///
+message CreateFileResponseItem {
+    string _id = 1;
+    string name = 2;
+    string boardId = 3;
+    string file = 4;
+    string createdAt = 5;
+}
+
 message CreateFileResponse {
-    string url = 1;
+    string message = 1;
+    optional CreateFileResponseItem item = 2;
 }
+
 message CreateFileRequest {
-    string name = 1;
+    optional string name = 1;
+    optional string boardId = 2;
+    optional bytes file = 3;
+    optional string extension = 4;
 }
+// ------------- End Create File ------------- ///
